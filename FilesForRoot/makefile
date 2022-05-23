@@ -13,7 +13,7 @@ CC = gcc
 all: vulnerable_root_prog rootdoprogram root_prog_nosuid setup 
 
 vulnerable_root_prog: vulnerable_root_prog.c
-	rm -rf ../Root/
+	$(REMOVE) -rf ../Root/
 	mkdir ../Root/
 	$(CC) vulnerable_root_prog.c -o ../Root/vulnerable_root_prog
 
@@ -34,5 +34,4 @@ clean:
 	$(REMOVE) ../Root/vulnerable_root_prog
 	$(REMOVE) ../Root/rootdo 
 	$(REMOVE) ../Root/root_prog_nosuid
-	rm -rf ../Root/
-
+	$(REMOVE) -rf ../Root/
