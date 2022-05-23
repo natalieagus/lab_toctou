@@ -11,18 +11,15 @@
 int main(int argc, char *argv[])
 
 {
-    char *fileName = argv[1];
-    char username[64];
-    char password[64];
-    int i;
-    FILE *fileHandler;
-
     if (argc < 3)
     {
         printf("ERROR, no file supplied, and no username supplied. Exiting now.\n");
         return 0;
     }
 
+    char *fileName = argv[1];
+    char *match = argv[2];
+    FILE *fileHandler;
     printf("vulnerable root program invoked with process of REAL UID : %d, REAL GID : %d, effective UID: %d\n", getuid(), getgid(), geteuid());
     /**
      * The purpose of calling “access()” system call is to check whether the real user has the “access” permission to the file (provided by the user as a command line argument). -- you can check the calling process' UID and GID using getuid() and getgid()
@@ -36,8 +33,6 @@ int main(int argc, char *argv[])
         printf("Access Granted \n");
         /*Simulating the Delay*/
         sleep(DELAY); // sleep for 1 secs
-
-        char *match = argv[2];
 
         // replacement_text is NOT a pointer, so sizeof(replacement_text) will give #chars + 1 terminating char
         // hashed password 00000 with salt jPSpZ3iS84semtGU, sha-512
