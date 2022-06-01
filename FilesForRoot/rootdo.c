@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
 
     char *execName = argv[1];
     char *filename = argv[2];
-    char *argv_new[3] = {execName, filename, NULL};
     char password[9];
 
     printf("Exec name is %s, with filename %s \n", execName, filename);
@@ -42,7 +41,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            if (execvp(execName, argv_new) == -1)
+            if (execvp(execName, argv) == -1)
             {
                 perror("Executable not found\n");
             }
