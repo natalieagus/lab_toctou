@@ -10,14 +10,10 @@ CC = gcc
 
 #Called by: make targetname 
 #also executed when you just called make. This calls the first target. 
-all: symlinkfile
-
-symlinkfile: symlink.c
-	$(CC) symlink.c -o symlink
+all: execute 
 
 execute:
 	./exploit.sh
 
 clean:
-	$(REMOVE) symlink
 	$(REMOVE) userfile.txt
